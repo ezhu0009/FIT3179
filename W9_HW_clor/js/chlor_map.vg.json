@@ -31,9 +31,9 @@
       },
       "tooltip": [
         {"field": "properties.name", "type": "nominal", "title": "State"},
-        {"field": "uninjured", "type":"quantitative", "title": "Uninjured attacks"},
-        {"field": "injured", "type": "quantitative", "title": "Injured attacks"}, 
-        {"field": "fatal", "type": "quantitative", "title": "Fatal attacks"}
+        {"field": "uninjured", "type":"ordinal", "title": "Uninjured attacks"},
+        {"field": "injured", "type": "ordinal", "title": "Injured attacks"}, 
+        {"field": "fatal", "type": "ordinal", "title": "Fatal attacks"}
       ]
     }
     
