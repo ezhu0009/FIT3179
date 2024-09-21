@@ -51,17 +51,17 @@
 
 
 
-  "mark": {"type": "geoshape", "stroke": "white"},
+  "mark": {"type": "geoshape", "stroke": "black"},
   "encoding": {
     "color": {
       "field": "Total Attacks",
       "type": "quantitative",
       "scale": {
-        "type": "bin-ordinal",
-        "domain": [0, 250, 500],
+        "type": "threshold",
+        "domain": [30, 100, 300, 400],
         "range": ["#f1eef6", "#bdc9e1", "#74a9cf", "#2b8cbe", "#045a8d"]
       },
-      "legend": {"titleFontSize": 16, "labelFontSize": 12}
+      "legend": {"titleFontSize": 16, "labelFontSize": 14}
     },
 
 
