@@ -10,7 +10,7 @@
     },
     "transform": [
       {
-        "lookup": "properties.NAME",
+        "lookup": "properties.name",
         "from": {
           "data": {
             "url": "https://raw.githubusercontent.com/ezhu0009/FIT3179/refs/heads/main/W9_HW_clor/data/shark_fromR.csv"
@@ -30,7 +30,7 @@
         "scale": {"type": "log"}
       },
       "tooltip": [
-        {"field": "properties.NAME", "type": "nominal", "title": "State"},
+        {"field": "properties.name", "type": "nominal", "title": "State"},
         {"field": "uninjured", "type":"quantitative", "title": "Uninjured attacks"},
         {"field": "injured", "type": "quantitative", "title": "Injured attacks"}, 
         {"field": "fatal", "type": "quantitative", "title": "Fatal attacks"}
