@@ -1,0 +1,61 @@
+---
+title: "Untitled"
+author: "Edwin Zhu"
+date: "2024-09-21"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r libs, message= FALSE}
+library(tidyverse)
+library(dplyr)
+```
+
+```{r read}
+sharks <- read.csv("data/CLEANED_Australian_Shark-Incident_Database_Public_Version.csv")
+```
+
+```{r df}
+shark_data <- sharks %>%
+  group_by(State) %>%
+  summarise(
+    uninjured = sum(Victim.injury == "uninjured"),
+    injured = sum(Victim.injury == "injured"),
+    fatal = sum(Victim.injury == "fatal")
+  )
+
+shark_data <- shark_data %>%
+  mutate(total_attacks = uninjured + injured + fatal)
+```
+
+```{r state}
+state_longlat <- data.frame(
+  State = c("NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"),
+  Long = c(151.2093, 133.7751, 153.0251, 138.6007, 147.3272, 144.9631, 115.8575),
+  Lat = c(-33.8688, -19.4914, -27.4698, -34.9285, -42.8821, -37.8136, -31.9505)
+)
+
+shark_final <- merge(state_longlat, shark_data, by = "State")
+
+shark_final <- shark_final %>%
+  mutate(State = recode(State,
+                        "NSW" = "New South Wales",
+                        "NT" = "Northern Territory",
+                        "QLD" = "Queensland",
+                        "SA" = "South Australia",
+                        "TAS" = "Tasmania",
+                        "VIC" = "Victoria",
+                        "WA" = "Western Australia"))
+```
+
+```{r exp}
+write.csv(shark_final, "data/shark_fromR.csv", row.names = FALSE)
+```
+
+
+
+
