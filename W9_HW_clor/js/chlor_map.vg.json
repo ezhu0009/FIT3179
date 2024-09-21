@@ -3,7 +3,7 @@
   "width": 800,
   "height": 400,
   "title": {
-    "text": "Fatal and Non-Fatal Shark incidents in Australia, 1971-2018",
+    "text": "Fatal and Non-Fatal Shark incidents in Australia, 1791-2018",
     "fontSize": 20
   },
   "projection": {"type": "equirectangular"},
