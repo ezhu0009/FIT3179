@@ -22,7 +22,7 @@
     {"calculate": "datum.total_attacks", "as": "Total Attacks"}
 
   ],
-  "mark": {"type": "geoshape"},
+  "mark": {"type": "geoshape", "stroke": "white"},
   "encoding": {
     "color": {
       "field": "Total Attacks",
