@@ -1,0 +1,36 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 800,
+    "height": 400,
+    "title": "Fatal and Non-Fatal Shark incidents in Australia since 1960",
+    "projection": {"type": "equirectangular"},
+    "layer": [
+      {
+        "data": {
+          "url": "https://raw.githubusercontent.com/ezhu0009/FIT3179/refs/heads/main/W9_HW/js/aus_gran.topojson",
+          "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
+        },
+        "mark": {"type": "geoshape", "fill": "skyblue", "stroke": "white"}
+      },
+      {
+        "data": {
+          "url": "https://raw.githubusercontent.com/ezhu0009/FIT3179/refs/heads/main/W9_HW/data/CLEANED_Australian_Shark-Incident_Database_Public_Version.csv"
+        },
+
+        "projection": {"type": "equirectangular"}, 
+
+        "mark": {"type": "circle", "tooltip": {"content": "data"}},
+        "encoding": {
+          "longitude": {"field": "Longitude", "type": "quantitative"},
+          "latitude": {"field": "Latitude", "type": "quantitative"},
+          "color": {
+            "field": "Victim.injury",
+            "type": "nominal",
+            "title": "Fatal or Injury", 
+            "scale": {"scheme": "bluegreen"}
+          }
+
+        }
+      }
+    ]
+  }
