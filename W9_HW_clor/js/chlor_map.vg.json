@@ -16,7 +16,7 @@
             "url": "https://raw.githubusercontent.com/ezhu0009/FIT3179/refs/heads/main/W9_HW_clor/data/shark_fromR.csv"
           },
           "key": "State",
-          "fields": ["total_attacks"]
+          "fields": ["uninjured", "injured", "fatal", "total_attacks"]
         }
       },
       {"calculate": "datum.total_attacks + 0.1", "as": "Total Attacks"}
