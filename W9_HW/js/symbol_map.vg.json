@@ -16,6 +16,9 @@
         "data": {
           "url": "https://raw.githubusercontent.com/ezhu0009/FIT3179/refs/heads/main/W9_HW/data/CLEANED_Australian_Shark-Incident_Database_Public_Version.csv"
         },
+
+        "projection": {"type": "equalEarth"}, 
+
         "mark": {"type": "circle", "tooltip": {"content": "data"}},
         "encoding": {
           "longitude": {"field": "Longitude", "type": "quantitative"},
@@ -24,7 +27,7 @@
             "field": "Victim.injury",
             "type": "nominal",
             "title": "Fatal or Injury", 
-            "scale": {"scheme": "set1"}
+            "scale": {"scheme": "bluegreen"}
           }
 
         }
