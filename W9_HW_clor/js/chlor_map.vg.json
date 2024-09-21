@@ -1,10 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 1200,
-  "height": 600,
+  "width": 800,
+  "height": 400,
   "title": {
     "text": "Fatal and Non-Fatal Shark incidents in Australia since 1960",
-    "fontSize": 26
+    "fontSize": 20
   },
   "projection": {"type": "equirectangular"},
   
@@ -61,7 +61,7 @@
         "domain": [30, 100, 300, 400],
         "range": ["#f1eef6", "#bdc9e1", "#74a9cf", "#2b8cbe", "#045a8d"]
       },
-      "legend": {"titleFontSize": 16, "labelFontSize": 14}
+      "legend": {"titleFontSize": 12, "labelFontSize": 12}
     },
 
 
