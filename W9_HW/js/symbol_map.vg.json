@@ -3,7 +3,7 @@
     "width": 800,
     "height": 450,
     "title": "Fatal and Non-Fatal Shark incidents in Australia since 1960",
-    "projection": {"type": "identity"},
+    "projection": {"type": "albers"},
     "layer": [
       {
         "data": {
