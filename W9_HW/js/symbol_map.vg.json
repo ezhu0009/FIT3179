@@ -10,13 +10,13 @@
           "url": "https://raw.githubusercontent.com/ezhu0009/FIT3179/refs/heads/main/W9_HW/js/aus.topojson",
           "format": {"type": "topojson", "feature": "ne_10m_admin_0_countries"}
         },
-        "mark": {"type": "geoshape", "fill": "orangered", "stroke": "skyblue"}
+        "mark": {"type": "geoshape", "fill": "skyblue", "stroke": "white"}
       },
       {
         "data": {
           "url": "https://raw.githubusercontent.com/ezhu0009/FIT3179/refs/heads/main/W9_HW/data/CLEANED_Australian_Shark-Incident_Database_Public_Version.csv"
         },
-        "mark": {"type": "square", "tooltip": {"content": "data"}},
+        "mark": {"type": "circle", "tooltip": {"content": "data"}},
         "encoding": {
           "longitude": {"field": "Longitude", "type": "quantitative"},
           "latitude": {"field": "Latitude", "type": "quantitative"},
