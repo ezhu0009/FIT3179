@@ -1,7 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 2000,
-    "height": 1200,
+    "width": 1400,
+    "height": 800,
     "title": "Fatal and Non-Fatal Shark incidents in Australia since 1960",
     "projection": {"type": "equirectangular"},
     "layer": [
@@ -17,7 +17,7 @@
           "url": "https://raw.githubusercontent.com/ezhu0009/FIT3179/refs/heads/main/W9_HW/data/CLEANED_Australian_Shark-Incident_Database_Public_Version.csv"
         },
 
-        "projection": {"type": "equalEarth"}, 
+        "projection": {"type": "equirectangular"}, 
 
         "mark": {"type": "circle", "tooltip": {"content": "data"}},
         "encoding": {
