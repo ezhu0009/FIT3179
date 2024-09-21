@@ -4,33 +4,37 @@
     "height": 400,
     "title": "Fatal and Non-Fatal Shark incidents in Australia since 1960",
     "projection": {"type": "equirectangular"},
-    "layer": [
+    "data": {
+      "url": "https://raw.githubusercontent.com/ezhu0009/FIT3179/refs/heads/main/W9_HW_clor/js/NEW_aus_grat.topojson",
+      "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
+    },
+    "transform": [
       {
-        "data": {
-          "url": "https://raw.githubusercontent.com/ezhu0009/FIT3179/refs/heads/main/W9_HW_clor/js/NEW_aus_grat.topojson",
-          "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
-        },
-        "mark": {"type": "geoshape", "fill": "skyblue", "stroke": "white"}
-      },
-      {
-        "data": {
-          "url": "https://raw.githubusercontent.com/ezhu0009/FIT3179/refs/heads/main/W9_HW_clor/data/CLEANED_Australian_Shark-Incident_Database_Public_Version.csv"
-        },
-
-        "projection": {"type": "equirectangular"}, 
-
-        "mark": {"type": "circle", "tooltip": {"content": "data"}},
-        "encoding": {
-          "longitude": {"field": "Longitude", "type": "quantitative"},
-          "latitude": {"field": "Latitude", "type": "quantitative"},
-          "color": {
-            "field": "Victim.injury",
-            "type": "nominal",
-            "title": "Fatal or Injury", 
-            "scale": {"scheme": "bluegreen"}
-          }
-
+        "lookup": "properties.NAME",
+        "from": {
+          "data": {
+            "url": "https://raw.githubusercontent.com/ezhu0009/FIT3179/refs/heads/main/W9_HW_clor/data/shark_fromR.csv"
+          },
+          "key": "State",
+          "fields": ["total_attacks"]
         }
-      }
-    ]
+      },
+      {"calculate": "datum.total_attacks + 0.1", "as": "Total Attacks"}
+
+    ],
+    "mark": {"type": "geoshape"},
+    "encoding": {
+      "color": {
+        "field": "Total Attacks",
+        "type": "quantitative",
+        "scale": {"type": "log"}
+      },
+      "tooltip": [
+        {"field": "properties.NAME", "type": "nominal", "title": "State"},
+        {"field": "uninjured", "type":"quantitative", "title": "Uninjured attacks"},
+        {"field": "injured", "type": "quantitative", "title": "Injured attacks"}, 
+        {"field": "fatal", "type": "quantitative", "title": "Fatal attacks"}
+      ]
+    }
+    
   }
