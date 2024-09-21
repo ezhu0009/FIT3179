@@ -2,8 +2,8 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "width": 800,
     "height": 450,
-    "title": "Test Symbol Map",
-    "projection": {"type": "equalEarth"},
+    "title": "Fatal and Non-Fatal Shark incidents in Australia since 1960",
+    "projection": {"type": "identity"},
     "layer": [
       {
         "data": {
