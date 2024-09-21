@@ -14,7 +14,7 @@
       },
       {
         "data": {
-          "url": "https://raw.githubusercontent.com/ezhu0009/FIT3179/refs/heads/main/W9_HW/data/CLEANED_Australian_Shark-Incident_Database_Public_Version.csv"
+          "url": "https://raw.githubusercontent.com/ezhu0009/FIT3179/refs/heads/main/W9_HW_dotmap/data/CLEANED_Australian_Shark-Incident_Database_Public_Version.csv"
         },
 
         "projection": {"type": "equirectangular"}, 
