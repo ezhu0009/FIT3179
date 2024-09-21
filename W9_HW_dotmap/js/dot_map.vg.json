@@ -7,8 +7,8 @@
     "layer": [
       {
         "data": {
-          "url": "https://raw.githubusercontent.com/ezhu0009/FIT3179/refs/heads/main/W9_HW_dotmap/js/aus_gran.topojson",
-          "format": {"type": "topojson", "feature": "1"}
+          "url": "https://raw.githubusercontent.com/ezhu0009/FIT3179/refs/heads/main/W9_HW_dotmap/js/NEW_aus_grat.topojson",
+          "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
         },
         "mark": {"type": "geoshape", "fill": "skyblue", "stroke": "white"}
       },
