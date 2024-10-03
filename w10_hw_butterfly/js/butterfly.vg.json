@@ -1,85 +1,66 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "description": "Shark types and their fatal/non-fatal incidents in Australian States, 1791-2018",
+    "description": "A butterfly chart representing fatal and survived shark attacks by species in Australia.",
     "data": {
-      "url": "https://raw.githubusercontent.com/ezhu0009/FIT3179/refs/heads/main/w10_hw_butterfly/data/w10_shark_types.csv"
+      "url": "https://raw.githubusercontent.com/ezhu0009/FIT3179/refs/heads/main/w10_hw_butterfly/data/w10_shark_types.csv",
+      "format": {"type": "csv"}
     },
     "transform": [
       {
-        "calculate": "datum.Victim.injury == 'survived' ? 'survived' : 'fatal'",
-        "as": "outcome"
+        "calculate": "datum.victim_injury === 'fatal' ? -datum.number_incidents : datum.number_incidents",
+        "as": "incident_count"
       }
     ],
-    "width": 800,
-    "height": 600,
-    "layer": [
+    "hconcat": [
       {
+        "transform": [
+          {"filter": {"field": "victim_injury", "equal": "fatal"}}
+        ],
         "mark": "bar",
         "encoding": {
           "y": {
-            "field": "Shark.common.name",
-            "type": "nominal",
-            "axis": {"title": "Shark Type"}
+            "field": "shark_name",
+            "type": "ordinal",
+            "axis": {"title": "Shark Type", "labelAngle": 0},
+            "sort": "descending"
           },
           "x": {
-            "field": "number_incidents",
-            "title": "Number of Attacks",
+            "field": "incident_count",
+            "type": "quantitative",
+            "title": "Number of Incidents",
             "axis": {"format": "s"}
           },
           "color": {
-            "field": "outcome",
-            "scale": {"range": ["#675193", "#ca8861"]},
-            "legend": {"title": "Outcome"}
-          }
-        },
-        "transform": [
-          {
-            "filter": {"field": "outcome", "equal": "survived"}
-          }
-        ]
-      },
-      {
-        "mark": {
-          "type": "text",
-          "align": "center"
-        },
-        "encoding": {
-          "y": {
-            "field": "Shark.common.name",
-            "type": "nominal",
-            "axis": null,
-            "sort": "descending"
-          },
-          "text": {
-            "field": "Shark.common.name",
-            "type": "nominal"
+            "field": "State",
+            "scale": {"scheme": "category10"},
+            "legend": {"title": "State"}
           }
         }
       },
       {
+        "transform": [
+          {"filter": {"field": "victim_injury", "equal": "survived"}}
+        ],
         "mark": "bar",
         "encoding": {
           "y": {
-            "field": "Shark.common.name",
-            "title": null,
-            "axis": null,
+            "field": "shark_name",
+            "type": "ordinal",
+            "axis": {"title": "Shark Type", "labelAngle": 0},
             "sort": "descending"
           },
           "x": {
-            "field": "number_incidents",
-            "title": "Number of Attacks",
+            "field": "incident_count",
+            "type": "quantitative",
+            "title": "Number of Incidents",
             "axis": {"format": "s"}
           },
           "color": {
-            "field": "outcome",
-            "legend": null
+            "field": "State",
+            "scale": {"scheme": "category10"},
+            "legend": {"title": "State"}
           }
-        },
-        "transform": [
-          {
-            "filter": {"field": "outcome", "equal": "fatal"}
-          }
-        ]
+        }
       }
     ],
     "config": {
