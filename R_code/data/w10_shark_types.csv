@@ -1,0 +1,45 @@
+Shark.common.name,Victim.injury,State,number_incidents
+bull shark,fatal,NSW,41
+bull shark,fatal,QLD,20
+bull shark,fatal,WA,3
+bull shark,survived,NSW,61
+bull shark,survived,NT,3
+bull shark,survived,QLD,59
+bull shark,survived,WA,15
+tiger shark,fatal,NSW,5
+tiger shark,fatal,NT,1
+tiger shark,fatal,QLD,71
+tiger shark,fatal,WA,9
+tiger shark,survived,NSW,10
+tiger shark,survived,NT,8
+tiger shark,survived,QLD,108
+tiger shark,survived,WA,18
+unknown,fatal,QLD,4
+unknown,fatal,TAS,1
+unknown,survived,NSW,17
+unknown,survived,NT,1
+unknown,survived,QLD,25
+unknown,survived,SA,3
+unknown,survived,VIC,3
+unknown,survived,WA,10
+whaler shark,fatal,NSW,1
+whaler shark,fatal,NT,1
+whaler shark,fatal,QLD,3
+whaler shark,fatal,SA,1
+whaler shark,survived,NSW,25
+whaler shark,survived,NT,3
+whaler shark,survived,QLD,25
+whaler shark,survived,VIC,3
+whaler shark,survived,WA,14
+white shark,fatal,NSW,32
+white shark,fatal,QLD,2
+white shark,fatal,SA,23
+white shark,fatal,TAS,5
+white shark,fatal,VIC,10
+white shark,fatal,WA,22
+white shark,survived,NSW,123
+white shark,survived,QLD,8
+white shark,survived,SA,39
+white shark,survived,TAS,18
+white shark,survived,VIC,36
+white shark,survived,WA,53

@@ -1,0 +1,41 @@
+---
+title: "w10"
+author: "Edwin Zhu"
+date: "2024-10-03"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r libs, message=FALSE}
+library(dplyr)
+library(tidyverse)
+```
+
+```{r read}
+shark_data <- read.csv("data/CLEANED_Australian_Shark-Incident_Database_Public_Version.csv")
+```
+
+```{r shark type}
+shark <- shark_data %>%
+  mutate(Shark.common.name = 
+           ifelse(Shark.common.name == "" | is.na(Shark.common.name), 
+                  "unknown", Shark.common.name)) %>%
+  filter(Shark.common.name %in% c("bull shark", "tiger shark", "whaler shark", "white shark", "unknown")) %>%
+  mutate(Victim.injury = ifelse(Victim.injury == "fatal", "fatal", "survived")) %>%
+ 
+  
+  group_by(Shark.common.name, Victim.injury, State) %>%
+  summarise(number_incidents = n(), .groups = 'drop')
+
+```
+
+
+```{r exp}
+write_csv(shark, "data/w10_shark_types.csv")
+```
+
+
+
