@@ -1,8 +1,90 @@
-
-
 {
-
-
-
-    
-}
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Shark types and their fatal/non-fatal incidents in Australian States, 1791-2018",
+    "data": {
+      "url": "https://raw.githubusercontent.com/ezhu0009/FIT3179/refs/heads/main/w10_hw_butterfly/data/w10_shark_types.csv"
+    },
+    "transform": [
+      {
+        "calculate": "datum.Victim.injury == 'survived' ? 'survived' : 'fatal'",
+        "as": "outcome"
+      }
+    ],
+    "width": 800,
+    "height": 600,
+    "layer": [
+      {
+        "mark": "bar",
+        "encoding": {
+          "y": {
+            "field": "Shark.common.name",
+            "type": "nominal",
+            "axis": {"title": "Shark Type"}
+          },
+          "x": {
+            "field": "number_incidents",
+            "title": "Number of Attacks",
+            "axis": {"format": "s"}
+          },
+          "color": {
+            "field": "outcome",
+            "scale": {"range": ["#675193", "#ca8861"]},
+            "legend": {"title": "Outcome"}
+          }
+        },
+        "transform": [
+          {
+            "filter": {"field": "outcome", "equal": "survived"}
+          }
+        ]
+      },
+      {
+        "mark": {
+          "type": "text",
+          "align": "center"
+        },
+        "encoding": {
+          "y": {
+            "field": "Shark.common.name",
+            "type": "nominal",
+            "axis": null,
+            "sort": "descending"
+          },
+          "text": {
+            "field": "Shark.common.name",
+            "type": "nominal"
+          }
+        }
+      },
+      {
+        "mark": "bar",
+        "encoding": {
+          "y": {
+            "field": "Shark.common.name",
+            "title": null,
+            "axis": null,
+            "sort": "descending"
+          },
+          "x": {
+            "field": "number_incidents",
+            "title": "Number of Attacks",
+            "axis": {"format": "s"}
+          },
+          "color": {
+            "field": "outcome",
+            "legend": null
+          }
+        },
+        "transform": [
+          {
+            "filter": {"field": "outcome", "equal": "fatal"}
+          }
+        ]
+      }
+    ],
+    "config": {
+      "view": {"stroke": null},
+      "axis": {"grid": false}
+    }
+  }
+  
