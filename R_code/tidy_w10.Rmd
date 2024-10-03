@@ -30,6 +30,12 @@ shark <- shark_data %>%
   group_by(Shark.common.name, Victim.injury, State) %>%
   summarise(number_incidents = n(), .groups = 'drop')
 
+shark <- shark %>%
+  rename(
+    shark_name = Shark.common.name,
+    victim_injury = Victim.injury
+  )
+
 ```
 
 
