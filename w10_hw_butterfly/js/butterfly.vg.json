@@ -1,8 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {"text": "Fatal and non-Fatal shark attacks by species in Australia, 1791-2018.",
-  "anchor": "middle", 
-  "fontSize": 18},
+  "title": {
+    "text": "Fatal and non-Fatal shark attacks by species in Australia, 1791-2018.",
+    "anchor": "middle",
+    "fontSize": 20
+  },
   "data": {
     "url": "https://raw.githubusercontent.com/ezhu0009/FIT3179/refs/heads/main/w10_hw_butterfly/data/w10_shark_types.csv"
   },
@@ -10,22 +12,22 @@
     {
       "calculate": "datum.victim_injury === 'fatal' ? -datum.number_incidents : datum.number_incidents",
       "as": "incident_count"
-    }, 
-    {"calculate": "abs(datum.incident_count)", 
-    "as": "abs_incident"}
+    },
+    {
+      "calculate": "abs(datum.incident_count)",
+      "as": "abs_incident"
+    }
   ],
   "spacing": 0,
-
-
-  
 
   "hconcat": [
     {
       "transform": [
-        {"filter": {"field": "victim_injury", "equal": "fatal"}}, 
-        {"filter": "datum.State == state || state == null"}
+        {"filter": {"field": "victim_injury", "equal": "fatal"}},
+        {"filter": "datum.State == state || state == 'All'"}
       ],
       "title": "Fatal",
+
       "mark": "bar",
       "encoding": {
         "y": {
@@ -34,82 +36,65 @@
           "axis": null,
           "sort": ["white shark", "tiger shark", "bull shark", "whaler shark", "unknown"]
         },
-
         "x": {
-          "aggregate": "sum", "field": "abs_incident",
+          "aggregate": "sum",
+          "field": "abs_incident",
           "title": "Attacks",
           "axis": {"format": "s"},
           "scale": {"domain": [0, 250]},
           "sort": "descending"
         },
-
         "color": {
           "field": "shark_name",
-          "scale": {"scheme": "category20"}, 
+          "scale": {"scheme": "category20"},
           "legend": null
         }
       }
     },
-
-
-
     {
       "width": 100,
       "view": {"stroke": null},
-
       "mark": {
         "type": "text",
         "align": "center"
       },
-
       "encoding": {
-        "y": {"field": "shark_name", "type": "nominal", "axis": null, "sort": ["white shark", "tiger shark", "bull shark", "whaler shark", "unknown"]},
+        "y": {
+          "field": "shark_name",
+          "type": "nominal",
+          "axis": null,
+          "sort": ["white shark", "tiger shark", "bull shark", "whaler shark", "unknown"]
+        },
         "text": {"field": "shark_name", "type": "nominal"}
       }
-    }, 
-
-
-
-
-
-
-
-
+    },
     {
       "transform": [
         {"filter": {"field": "victim_injury", "equal": "survived"}},
-        {"filter": "datum.State == state || state == null"}
+        {"filter": "datum.State == state || state == 'All'"}
       ],
       "title": "Non-fatal",
       "mark": "bar",
       "encoding": {
-
         "y": {
           "field": "shark_name",
-          "type": "ordinal", 
+          "type": "ordinal",
           "axis": null,
           "sort": ["white shark", "tiger shark", "bull shark", "whaler shark", "unknown"]
         },
-        
         "x": {
-          "aggregate": "sum", "field": "abs_incident",
+          "aggregate": "sum",
+          "field": "abs_incident",
           "title": "Attacks",
           "axis": {"format": "s"},
           "sort": "ascending"
         },
-
         "color": {
           "field": "shark_name",
           "scale": {"scheme": "category20"}
         }
       }
     }
-
-
-
-
-
-
   ],
   "config": {
     "view": {"stroke": null},
@@ -118,25 +103,14 @@
 
   "params": [
     {
-      "name": "state", 
-      "value": null, 
+      "name": "state",
+      "value": "All",
       "bind": {
-        "input": "select", 
-      "options": [null, "NSW", "QLD", "WA", "NT", "SA", "TAS", "VIC"]
+        "input": "select",
+        "options": ["All", "NSW", "QLD", "WA", "NT", "SA", "TAS", "VIC"],
+        "labels": ["All", "NSW", "QLD", "WA", "NT", "SA", "TAS", "VIC"],
+        "name": "Filter by State or Territory:  "
       }
     }
   ]
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
