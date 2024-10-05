@@ -1,9 +1,8 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "description": "A butterfly chart representing fatal and survived shark attacks by species in Australia.",
+    "title": "Fatal and non-Fatal shark attacks by species in Australia, 1791-2018.",
     "data": {
-      "url": "https://raw.githubusercontent.com/ezhu0009/FIT3179/refs/heads/main/w10_hw_butterfly/data/w10_shark_types.csv",
-      "format": {"type": "csv"}
+      "url": "https://raw.githubusercontent.com/ezhu0009/FIT3179/refs/heads/main/w10_hw_butterfly/data/w10_shark_types.csv"
     },
     "transform": [
       {
@@ -11,6 +10,11 @@
         "as": "incident_count"
       }
     ],
+    "spacing": 0,
+
+
+    
+
     "hconcat": [
       {
         "transform": [
@@ -31,12 +35,16 @@
             "axis": {"format": "s"}
           },
           "color": {
-            "field": "State",
-            "scale": {"scheme": "category10"},
-            "legend": {"title": "State"}
+            "field": "shark_name",
+            "scale": {"scheme": "category20"}
           }
         }
       },
+
+
+
+
+
       {
         "transform": [
           {"filter": {"field": "victim_injury", "equal": "survived"}}
@@ -56,12 +64,17 @@
             "axis": {"format": "s"}
           },
           "color": {
-            "field": "State",
-            "scale": {"scheme": "category10"},
-            "legend": {"title": "State"}
+            "field": "shark_name",
+            "scale": {"scheme": "category20"}
           }
         }
       }
+
+
+
+
+
+
     ],
     "config": {
       "view": {"stroke": null},
