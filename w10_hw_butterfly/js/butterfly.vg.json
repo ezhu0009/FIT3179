@@ -1,84 +1,116 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "Fatal and non-Fatal shark attacks by species in Australia, 1791-2018.",
-    "data": {
-      "url": "https://raw.githubusercontent.com/ezhu0009/FIT3179/refs/heads/main/w10_hw_butterfly/data/w10_shark_types.csv"
-    },
-    "transform": [
-      {
-        "calculate": "datum.victim_injury === 'fatal' ? -datum.number_incidents : datum.number_incidents",
-        "as": "incident_count"
-      }
-    ],
-    "spacing": 0,
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {"text": "Fatal and non-Fatal shark attacks by species in Australia, 1791-2018.",
+  "anchor": "middle", 
+  "fontSize": 18},
+  "data": {
+    "url": "https://raw.githubusercontent.com/ezhu0009/FIT3179/refs/heads/main/w10_hw_butterfly/data/w10_shark_types.csv"
+  },
+  "transform": [
+    {
+      "calculate": "datum.victim_injury === 'fatal' ? -datum.number_incidents : datum.number_incidents",
+      "as": "incident_count"
+    }, 
+    {"calculate": "abs(datum.incident_count)", 
+    "as": "abs_incident"}
+  ],
+  "spacing": 0,
 
 
-    
+  
 
-    "hconcat": [
-      {
-        "transform": [
-          {"filter": {"field": "victim_injury", "equal": "fatal"}}
-        ],
-        "mark": "bar",
-        "encoding": {
-          "y": {
-            "field": "shark_name",
-            "type": "ordinal",
-            "axis": {"title": "Shark Type", "labelAngle": 0},
-            "sort": "descending"
-          },
-          "x": {
-            "field": "incident_count",
-            "type": "quantitative",
-            "title": "Number of Incidents",
-            "axis": {"format": "s"}
-          },
-          "color": {
-            "field": "shark_name",
-            "scale": {"scheme": "category20"}
-          }
+  "hconcat": [
+    {
+      "transform": [
+        {"filter": {"field": "victim_injury", "equal": "fatal"}}
+      ],
+      "title": "Fatal",
+      "mark": "bar",
+      "encoding": {
+        "y": {
+          "field": "shark_name",
+          "type": "nominal",
+          "axis": null,
+          "sort": ["white shark", "tiger shark", "bull shark", "whaler shark", "unknown"]
+        },
+
+        "x": {
+          "aggregate": "sum", "field": "abs_incident",
+          "title": "Attacks",
+          "axis": {"format": "s"},
+          "scale": {"domain": [0, 250]},
+          "sort": "descending"
+        },
+
+        "color": {
+          "field": "shark_name",
+          "scale": {"scheme": "category20"}, 
+          "legend": null
         }
+      }
+    },
+
+
+
+    {
+      "width": 100,
+      "view": {"stroke": null},
+
+      "mark": {
+        "type": "text",
+        "align": "center"
       },
 
+      "encoding": {
+        "y": {"field": "shark_name", "type": "nominal", "axis": null, "sort": ["white shark", "tiger shark", "bull shark", "whaler shark", "unknown"]},
+        "text": {"field": "shark_name", "type": "nominal"}
+      }
+    }, 
 
 
 
 
-      {
-        "transform": [
-          {"filter": {"field": "victim_injury", "equal": "survived"}}
-        ],
-        "mark": "bar",
-        "encoding": {
-          "y": {
-            "field": "shark_name",
-            "type": "ordinal",
-            "axis": {"title": "Shark Type", "labelAngle": 0},
-            "sort": "descending"
-          },
-          "x": {
-            "field": "incident_count",
-            "type": "quantitative",
-            "title": "Number of Incidents",
-            "axis": {"format": "s"}
-          },
-          "color": {
-            "field": "shark_name",
-            "scale": {"scheme": "category20"}
-          }
+
+
+
+
+    {
+      "transform": [
+        {"filter": {"field": "victim_injury", "equal": "survived"}}
+      ],
+      "title": "Non-fatal",
+      "mark": "bar",
+      "encoding": {
+
+        "y": {
+          "field": "shark_name",
+          "type": "ordinal", 
+          "axis": null,
+          "sort": ["white shark", "tiger shark", "bull shark", "whaler shark", "unknown"]
+        },
+        
+        "x": {
+          "aggregate": "sum", "field": "abs_incident",
+          "title": "Attacks",
+          "axis": {"format": "s"},
+          "sort": "ascending"
+        },
+
+        "color": {
+          "field": "shark_name",
+          "scale": {"scheme": "category20"}
         }
       }
-
-
-
-
-
-
-    ],
-    "config": {
-      "view": {"stroke": null},
-      "axis": {"grid": false}
     }
+
+
+
+
+
+
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"grid": false}
   }
-  
+}
