@@ -22,7 +22,8 @@
   "hconcat": [
     {
       "transform": [
-        {"filter": {"field": "victim_injury", "equal": "fatal"}}
+        {"filter": {"field": "victim_injury", "equal": "fatal"}}, 
+        {"filter": "datum.State == state || state == null"}
       ],
       "title": "Fatal",
       "mark": "bar",
@@ -76,7 +77,8 @@
 
     {
       "transform": [
-        {"filter": {"field": "victim_injury", "equal": "survived"}}
+        {"filter": {"field": "victim_injury", "equal": "survived"}},
+        {"filter": "datum.State == state || state == null"}
       ],
       "title": "Non-fatal",
       "mark": "bar",
@@ -112,5 +114,29 @@
   "config": {
     "view": {"stroke": null},
     "axis": {"grid": false}
-  }
+  },
+
+  "params": [
+    {
+      "name": "state", 
+      "value": null, 
+      "bind": {
+        "input": "select", 
+      "options": [null, "NSW", "QLD", "WA", "NT", "SA", "TAS", "VIC"]
+      }
+    }
+  ]
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
