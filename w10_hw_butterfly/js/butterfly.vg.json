@@ -5,9 +5,11 @@
     "anchor": "middle",
     "fontSize": 20
   },
+
   "data": {
     "url": "https://raw.githubusercontent.com/ezhu0009/FIT3179/refs/heads/main/w10_hw_butterfly/data/w10_shark_types.csv"
   },
+
   "transform": [
     {
       "calculate": "datum.victim_injury === 'fatal' ? -datum.number_incidents : datum.number_incidents",
@@ -20,6 +22,9 @@
   ],
   "spacing": 0,
 
+
+
+
   "hconcat": [
     {
       "transform": [
@@ -30,12 +35,14 @@
 
       "mark": "bar",
       "encoding": {
+
         "y": {
           "field": "shark_name",
           "type": "nominal",
           "axis": null,
           "sort": ["white shark", "tiger shark", "bull shark", "whaler shark", "unknown"]
         },
+
         "x": {
           "aggregate": "sum",
           "field": "abs_incident",
@@ -44,17 +51,24 @@
           "scale": {"domain": [0, 250]},
           "sort": "descending"
         },
+
         "color": {
           "field": "shark_name",
           "scale": {"scheme": "category20"},
           "legend": null
         },
+
         "tooltip": [
           {"field": "shark_name", "type": "nominal", "title": "Shark Name"},
           {"aggregate": "sum", "field": "abs_incident", "title": "Total Attacks"}
         ]
       }
     },
+
+
+
+
+
     {
       "width": 100,
       "view": {"stroke": null},
@@ -62,6 +76,7 @@
         "type": "text",
         "align": "center"
       },
+
       "encoding": {
         "y": {
           "field": "shark_name",
@@ -72,13 +87,20 @@
         "text": {"field": "shark_name", "type": "nominal"}
       }
     },
+
+
+
+
+
     {
       "transform": [
         {"filter": {"field": "victim_injury", "equal": "survived"}},
         {"filter": "datum.State == state || state == 'All'"}
       ],
+
       "title": "Non-fatal",
       "mark": "bar",
+
       "encoding": {
         "y": {
           "field": "shark_name",
@@ -86,6 +108,7 @@
           "axis": null,
           "sort": ["white shark", "tiger shark", "bull shark", "whaler shark", "unknown"]
         },
+
         "x": {
           "aggregate": "sum",
           "field": "abs_incident",
@@ -93,38 +116,32 @@
           "axis": {"format": "s", "grid": true},
           "sort": "ascending"
         },
+
         "color": {
           "field": "shark_name",
           "scale": {"scheme": "category20"},
           "legend": null
         },
+
         "tooltip": [
           {"field": "shark_name", "type": "nominal", "title": "Shark Name"},
           {"aggregate": "sum", "field": "abs_incident", "title": "Total Attacks"}
         ]
       }
-    },
-
-
-
-    {
-      "transform": [
-        {"filter": {"field": "shark_name", "equal": "white shark"}},
-        {"aggregate": [
-          {"op": "sum", "field": "abs_incident", "as": "total_attacks"}
-        ]}
-      ],
-      "mark": "text",
-      "encoding": {
-        "text": {"field": "total_attacks"},
-        "fill": {"value": "grey"}
-      }
     }
+
   ],
+
+
+
   "config": {
     "view": {"stroke": null},
     "axis": {"grid": false}
   },
+
+
+
+
 
   "params": [
     {
@@ -138,4 +155,7 @@
       }
     }
   ]
+
+
+  
 }
