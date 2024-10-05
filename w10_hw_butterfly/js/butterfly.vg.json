@@ -8,8 +8,6 @@
   "data": {
     "url": "https://raw.githubusercontent.com/ezhu0009/FIT3179/refs/heads/main/w10_hw_butterfly/data/w10_shark_types.csv"
   },
-
-
   "transform": [
     {
       "calculate": "datum.victim_injury === 'fatal' ? -datum.number_incidents : datum.number_incidents",
@@ -22,17 +20,15 @@
   ],
   "spacing": 0,
 
-
   "hconcat": [
     {
       "transform": [
         {"filter": {"field": "victim_injury", "equal": "fatal"}},
         {"filter": "datum.State == state || state == 'All'"}
       ],
-
       "title": "Fatal",
-      "mark": "bar",
 
+      "mark": "bar",
       "encoding": {
         "y": {
           "field": "shark_name",
@@ -40,7 +36,6 @@
           "axis": null,
           "sort": ["white shark", "tiger shark", "bull shark", "whaler shark", "unknown"]
         },
-
         "x": {
           "aggregate": "sum",
           "field": "abs_incident",
@@ -49,26 +44,17 @@
           "scale": {"domain": [0, 250]},
           "sort": "descending"
         },
-
         "color": {
           "field": "shark_name",
           "scale": {"scheme": "category20"},
           "legend": null
         },
-
         "tooltip": [
-          {"field": "shark_name", "type": "nominal", "title": "Shark Common Name"},
-          {"aggregate": "sum", "field": "abs_incident", "title": "Fatal Incidents in Region"}
+          {"field": "shark_name", "type": "nominal", "title": "Shark Name"},
+          {"aggregate": "sum", "field": "abs_incident", "title": "Total Attacks"}
         ]
-        
       }
     },
-
-
-
-
-
-
     {
       "width": 100,
       "view": {"stroke": null},
@@ -76,7 +62,6 @@
         "type": "text",
         "align": "center"
       },
-
       "encoding": {
         "y": {
           "field": "shark_name",
@@ -84,34 +69,23 @@
           "axis": null,
           "sort": ["white shark", "tiger shark", "bull shark", "whaler shark", "unknown"]
         },
-
         "text": {"field": "shark_name", "type": "nominal"}
       }
     },
-
-
-
-
-
-
-
     {
       "transform": [
         {"filter": {"field": "victim_injury", "equal": "survived"}},
         {"filter": "datum.State == state || state == 'All'"}
       ],
-
       "title": "Non-fatal",
       "mark": "bar",
       "encoding": {
-
         "y": {
           "field": "shark_name",
           "type": "ordinal",
           "axis": null,
           "sort": ["white shark", "tiger shark", "bull shark", "whaler shark", "unknown"]
         },
-
         "x": {
           "aggregate": "sum",
           "field": "abs_incident",
@@ -119,56 +93,49 @@
           "axis": {"format": "s", "grid": true},
           "sort": "ascending"
         },
-
         "color": {
           "field": "shark_name",
-          "scale": {"scheme": "category20"}
+          "scale": {"scheme": "category20"},
+          "legend": null
         },
-
         "tooltip": [
-          {"field": "shark_name", "type": "nominal", "title": "Shark Common Name"},
-          {"aggregate": "sum", "field": "abs_incident", "title": "Non-Fatal Incidents in Region"}
+          {"field": "shark_name", "type": "nominal", "title": "Shark Name"},
+          {"aggregate": "sum", "field": "abs_incident", "title": "Total Attacks"}
         ]
+      }
+    },
 
+
+
+    {
+      "transform": [
+        {"filter": {"field": "shark_name", "equal": "white shark"}},
+        {"aggregate": [
+          {"op": "sum", "field": "abs_incident", "as": "total_attacks"}
+        ]}
+      ],
+      "mark": "text",
+      "encoding": {
+        "text": {"field": "total_attacks"},
+        "fill": {"value": "grey"}
       }
     }
-
-
-
-
-
-
-
-
   ],
   "config": {
     "view": {"stroke": null},
     "axis": {"grid": false}
   },
 
-
-
-
-
-
   "params": [
     {
       "name": "state",
       "value": "All",
-
       "bind": {
         "input": "select",
         "options": ["All", "NSW", "QLD", "WA", "NT", "SA", "TAS", "VIC"],
         "labels": ["All", "NSW", "QLD", "WA", "NT", "SA", "TAS", "VIC"],
         "name": "Filter by State or Territory:  "
       }
-
     }
   ]
-
-
-
-
-
-
 }
