@@ -40,7 +40,7 @@
           "aggregate": "sum",
           "field": "abs_incident",
           "title": "Attacks",
-          "axis": {"format": "s"},
+          "axis": {"format": "s", "grid": true},
           "scale": {"domain": [0, 250]},
           "sort": "descending"
         },
@@ -86,7 +86,7 @@
           "aggregate": "sum",
           "field": "abs_incident",
           "title": "Attacks",
-          "axis": {"format": "s"},
+          "axis": {"format": "s", "grid": true},
           "sort": "ascending"
         },
         "color": {
