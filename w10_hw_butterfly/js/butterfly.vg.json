@@ -9,7 +9,7 @@
   "data": {
     "url": "https://raw.githubusercontent.com/ezhu0009/FIT3179/refs/heads/main/w10_hw_butterfly/data/w10_shark_types.csv"
   },
-
+  
   "transform": [
     {
       "calculate": "datum.victim_injury === 'fatal' ? -datum.number_incidents : datum.number_incidents",
@@ -24,18 +24,18 @@
 
 
 
-
   "hconcat": [
+
     {
       "transform": [
         {"filter": {"field": "victim_injury", "equal": "fatal"}},
         {"filter": "datum.State == state || state == 'All'"}
       ],
+
       "title": "Fatal",
-
       "mark": "bar",
-      "encoding": {
 
+      "encoding": {
         "y": {
           "field": "shark_name",
           "type": "nominal",
@@ -68,7 +68,6 @@
 
 
 
-
     {
       "width": 100,
       "view": {"stroke": null},
@@ -84,11 +83,10 @@
           "axis": null,
           "sort": ["white shark", "tiger shark", "bull shark", "whaler shark", "unknown"]
         },
+
         "text": {"field": "shark_name", "type": "nominal"}
       }
     },
-
-
 
 
 
@@ -128,21 +126,36 @@
           {"aggregate": "sum", "field": "abs_incident", "title": "Total Attacks"}
         ]
       }
+    },
+
+
+
+    {
+      "transform": [
+        {"filter": {"field": "shark_name", "equal": "white shark"}},
+        {"aggregate": [
+          {"op": "sum", "field": "abs_incident", "as": "total_attacks"}
+        ]}
+      ],
+      "mark": "text",
+      "encoding": {
+        "text": {"value": "White shark scientific name:\nCarcharodon carcharias"},
+        "fill": {"value": "grey"}
+      }
     }
+
+
 
   ],
 
 
-
+ 
   "config": {
     "view": {"stroke": null},
     "axis": {"grid": false}
   },
 
-
-
-
-
+  
   "params": [
     {
       "name": "state",
@@ -157,5 +170,4 @@
   ]
 
 
-  
 }
