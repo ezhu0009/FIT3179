@@ -1,6 +1,13 @@
 
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+    "title": {
+          "text": "Annual number of Attacks from 1791 - 2024",
+          "anchor": "middle",
+          "fontSize": 18
+        },
+
     "width": 300,
     "height": 200,
 
@@ -8,14 +15,22 @@
     "mark": "area",
 
 
+
+
+      
+
+
     "encoding": {
       "x": {
         "timeUnit": "yearmonth", "field": "year",
-        "axis": {"format": "%Y"}
+        "axis": {"format": "%Y"},
+        "title": "Year"
       },
+
       "y": {
-        "aggregate": "sum", "field": "number_of_incidents",
-        "title": "Attacks"
+        "aggregate": "sum", "field": "number_incidents",
+        "title": "Number of Attacks"
       }
     }
+
   }
