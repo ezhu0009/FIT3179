@@ -176,14 +176,18 @@
 
 
 
+
+
     <script type="text/javascript">
         var chloropeth_map = "../W9_HW_clor/js/chlor_map.vg.json";
         var butterfly_chart = "../w10_hw_butterfly/js/butterfly.vg.json";
-        // var area_chart = "../"
+        var area_chart = "../vis3_area/js/area.vg.json";
 
         vegaEmbed('#vis1', chloropeth_map, { "actions": false });
 
-        vegaEmbed('#vis2', butterfly_chart, { "actions": false }).then(function (result) {
+        vegaEmbed('#vis2', butterfly_chart, { "actions": false });
+
+        vegaEmbed('#vis2', area_chart, { "actions": false }).then(function (result) {
             // Access the Vega view instance (blah blah)
         }).catch(console.error);
 
