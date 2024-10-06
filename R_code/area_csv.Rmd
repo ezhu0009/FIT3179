@@ -1,0 +1,37 @@
+---
+title: "area"
+author: "Edwin Zhu"
+date: "2024-10-06"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r libs, message=FALSE}
+library(dplyr)
+library(tidyverse)
+```
+
+```{r data}
+shark_csv <- read_csv("data/CLEANED_Australian_Shark-Incident_Database_Public_Version.csv")
+```
+
+```{r cols}
+year_shark <- shark_csv %>%
+  group_by(Incident.year) %>%
+  summarise(number_incidents = n(), .groups = 'drop')
+
+```
+
+```{r exp}
+
+write_csv(year_shark, "data/yearly_shark.csv")
+
+```
+
+
+
+
