@@ -1,5 +1,21 @@
 
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 300,
+    "height": 200,
+
+    "data": {"url": "https://raw.githubusercontent.com/ezhu0009/FIT3179/refs/heads/main/vis3_area/data/yearly_shark.csv"},
+    "mark": "area",
 
 
-
-
+    "encoding": {
+      "x": {
+        "timeUnit": "yearmonth", "field": "year",
+        "axis": {"format": "%Y"}
+      },
+      "y": {
+        "aggregate": "sum", "field": "number_of_incidents",
+        "title": "Attacks"
+      }
+    }
+  }
