@@ -59,7 +59,7 @@
         },
 
         "tooltip": [
-          {"field": "shark_name", "type": "nominal", "title": "Shark Name"},
+          {"field": "shark_name", "type": "nominal", "title": "Shark Common Name"},
           {"aggregate": "sum", "field": "abs_incident", "title": "Total Attacks"}
         ]
       }
@@ -122,7 +122,7 @@
         },
 
         "tooltip": [
-          {"field": "shark_name", "type": "nominal", "title": "Shark Name"},
+          {"field": "shark_name", "type": "nominal", "title": "Shark Common Name"},
           {"aggregate": "sum", "field": "abs_incident", "title": "Total Attacks"}
         ]
       }
