@@ -6,10 +6,12 @@
     "fontSize": 20
   },
 
+
   "data": {
     "url": "https://raw.githubusercontent.com/ezhu0009/FIT3179/refs/heads/main/w10_hw_butterfly/data/w10_shark_types.csv"
   },
-  
+
+
   "transform": [
     {
       "calculate": "datum.victim_injury === 'fatal' ? -datum.number_incidents : datum.number_incidents",
@@ -21,6 +23,9 @@
     }
   ],
   "spacing": 0,
+
+
+
 
 
 
@@ -40,8 +45,10 @@
           "field": "shark_name",
           "type": "nominal",
           "axis": null,
-          "sort": ["white shark", "tiger shark", "bull shark", "whaler shark", "unknown"]
+          "sort": ["white shark", "tiger shark", "bull shark", "whaler shark", "unknown"],
+          "scale": {"domain": ["white shark", "tiger shark", "bull shark", "whaler shark", "unknown"]}
         },
+
 
         "x": {
           "aggregate": "sum",
@@ -52,11 +59,13 @@
           "sort": "descending"
         },
 
+
         "color": {
           "field": "shark_name",
           "scale": {"scheme": "category20"},
           "legend": null
         },
+
 
         "tooltip": [
           {"field": "shark_name", "type": "nominal", "title": "Shark Common Name"},
@@ -64,6 +73,7 @@
         ]
       }
     },
+
 
 
 
@@ -81,12 +91,17 @@
           "field": "shark_name",
           "type": "nominal",
           "axis": null,
-          "sort": ["white shark", "tiger shark", "bull shark", "whaler shark", "unknown"]
+          "sort": ["white shark", "tiger shark", "bull shark", "whaler shark", "unknown"],
+          "scale": {"domain": ["white shark", "tiger shark", "bull shark", "whaler shark", "unknown"]}
         },
 
         "text": {"field": "shark_name", "type": "nominal"}
       }
     },
+
+
+
+
 
 
 
@@ -104,8 +119,10 @@
           "field": "shark_name",
           "type": "ordinal",
           "axis": null,
-          "sort": ["white shark", "tiger shark", "bull shark", "whaler shark", "unknown"]
+          "sort": ["white shark", "tiger shark", "bull shark", "whaler shark", "unknown"],
+          "scale": {"domain": ["white shark", "tiger shark", "bull shark", "whaler shark", "unknown"]}
         },
+
 
         "x": {
           "aggregate": "sum",
@@ -114,6 +131,7 @@
           "axis": {"format": "s", "grid": true},
           "sort": "ascending"
         },
+
 
         "color": {
           "field": "shark_name",
@@ -130,6 +148,9 @@
 
 
 
+
+
+
     {
       "transform": [
         {"filter": {"field": "shark_name", "equal": "white shark"}},
@@ -143,19 +164,22 @@
         "fill": {"value": "grey"}
       }
     }
-
-
-
   ],
 
 
- 
+
+
+
   "config": {
     "view": {"stroke": null},
     "axis": {"grid": false}
   },
 
-  
+
+
+
+
+
   "params": [
     {
       "name": "state",
@@ -170,4 +194,6 @@
   ]
 
 
+
+  
 }
