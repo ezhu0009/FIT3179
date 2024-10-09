@@ -183,6 +183,7 @@
               "field": "abs_incident",
               "title": "Attacks",
               "axis": {"format": "s", "grid": true},
+              "scale": {"domain": [0, 250]},
               "sort": "ascending"
             },
 
