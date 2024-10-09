@@ -16,11 +16,15 @@
       },
       "mark": {"type": "geoshape", "stroke": "lightgray"}
     },
+
+
+
     {
       "data": {
         "url": "https://raw.githubusercontent.com/ezhu0009/FIT3179/refs/heads/main/W9_HW_clor/js/NEW_aus_grat.topojson",
         "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
       },
+
       "transform": [
         {
           "lookup": "properties.name",
@@ -32,8 +36,11 @@
             "fields": ["uninjured", "injured", "fatal", "total_attacks"]
           }
         },
+
         {"calculate": "datum.total_attacks", "as": "Total Attacks"}
       ],
+
+
       "mark": {"type": "geoshape", "stroke": "black"},
       "encoding": {
         "color": {
@@ -44,8 +51,13 @@
             "domain": [30, 100, 300, 400],
             "range": ["#f1eef6", "#bdc9e1", "#74a9cf", "#2b8cbe", "#045a8d"]
           },
+
           "legend": {"titleFontSize": 12, "labelFontSize": 12}
         },
+
+
+
+
         "tooltip": [
           {"field": "properties.name", "type": "nominal", "title": "State"},
           {"field": "uninjured", "type": "ordinal", "title": "Uninjured attacks"},
@@ -55,11 +67,21 @@
         ]
       }
     },
+
+
+
+
+
+
+
+
     {
       "data": {
         "url": "https://raw.githubusercontent.com/ezhu0009/FIT3179/refs/heads/main/W9_HW_clor/data/shark_fromR.csv"
       },
+
       "mark": {"type": "text", "color": "black", "fontSize": 12, "fontWeight": "lighter"},
+
       "encoding": {
         "longitude": {"field": "Long", "type": "quantitative"},
         "latitude": {"field": "Lat", "type": "quantitative"},
@@ -67,5 +89,7 @@
         "tooltip": [{"field": "total_attacks", "type": "quantitative", "title": "Total Attacks"}]
       }
     }
+
+    
   ]
 }
