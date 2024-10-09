@@ -67,7 +67,13 @@
               "field": "shark_name",
               "scale": {"range": ["#66c2a5", "#fc8d62", "#8da0cb", "#e78ac3", "#a6d854"]},
               "legend": null
-            }
+            }, 
+
+            "tooltip": [
+              {"field": "shark_name", "type": "nominal", "title": "Shark Common Name"},
+              {"aggregate": "sum", "field": "abs_incident", "title": "Total Attacks"}
+            ]
+
           }
         },
         
@@ -184,7 +190,11 @@
               "field": "shark_name",
               "scale": {"range": ["#66c2a5", "#fc8d62", "#8da0cb", "#e78ac3", "#a6d854"]},
               "legend": null
-            }
+            }, 
+            "tooltip": [
+              {"field": "shark_name", "type": "nominal", "title": "Shark Common Name"},
+              {"aggregate": "sum", "field": "abs_incident", "title": "Total Attacks"}
+            ]
           }
         },
 
