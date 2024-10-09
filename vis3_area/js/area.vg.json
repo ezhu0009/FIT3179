@@ -1,36 +1,78 @@
 
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {"url": "https://raw.githubusercontent.com/ezhu0009/FIT3179/refs/heads/main/vis3_area/data/yearly_shark.csv"},
+    
+    
+    "vconcat": [{
 
-    "title": {
+      "title": {
           "text": "Annual number of Attacks from 1791 - 2024",
           "anchor": "middle",
           "fontSize": 18
         },
+        
+      "width": 700,
+      "height": 300,
+      "mark": "bar",
 
-    "width": 450,
-    "height": 300,
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "temporal",
+          "scale": {"domain": {"param": "brush"}},
+          "axis": {"title": ""}
+        },
+        "y": {"field": "number_incidents", "type": "quantitative", "title": "Number of Attacks"}
+      }
 
-    "data": {"url": "https://raw.githubusercontent.com/ezhu0009/FIT3179/refs/heads/main/vis3_area/data/yearly_shark.csv"},
-    "mark": "area",
+    },
 
+
+    
+
+    {
+      "title": {
+          "text": "Dragging Timeline slider",
+          "anchor": "middle",
+          "fontSize": 13,
+          "fontWeight": "lighter"
+        },
+
+      "width": 700, 
+      "height": 70, 
+      "mark": "rule", 
+
+      "params": [{
+        "name": "brush", 
+        "select": {"type": "interval", "encodings": ["x"]}
+      }],
+
+      "encoding": {
+        "x": {
+          "field": "year", 
+          "type": "temporal", 
+          "title": "Year"
+        }, 
+
+        "y": {
+          "field": "number_incidents",
+          "type": "quantitative",
+          "title": "Number of Attacks",
+          "axis": {"tickCount": 3, "grid": false}
+        }
+      }
+
+    }
+
+
+  
+  ]
+
+  
 
 
 
       
-
-
-    "encoding": {
-      "x": {
-        "timeUnit": "yearmonth", "field": "year",
-        "axis": {"format": "%Y"},
-        "title": "Year"
-      },
-
-      "y": {
-        "aggregate": "sum", "field": "number_incidents",
-        "title": "Number of Attacks"
-      }
-    }
 
   }
