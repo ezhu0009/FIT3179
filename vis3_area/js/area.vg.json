@@ -12,18 +12,42 @@
           "fontSize": 18
         },
         
-      "width": 700,
+      "width": 750,
       "height": 300,
       "mark": "bar",
 
       "encoding": {
         "x": {
+          "timeUnit": "year",
           "field": "year",
           "type": "temporal",
           "scale": {"domain": {"param": "brush"}},
-          "axis": {"title": ""}
+          "axis": {"format": "%Y", "title": ""}
         },
-        "y": {"field": "number_incidents", "type": "quantitative", "title": "Number of Attacks"}
+
+        "y": {
+          "field": "number_incidents", 
+          "type": "quantitative", 
+          "title": "Number of Attacks"
+          
+        }, 
+
+        "color": {
+          "field": "number_incidents",
+          "title": "Annual Attacks",
+          "scale": {
+            "type": "threshold", 
+            "domain": [5, 10, 20], 
+            "range": ["#bdc9e1", "#74a9cf", "#2b8cbe", "#045a8d"]
+          }
+
+          
+        },
+
+        "tooltip": [
+          {"field": "year", "type": "temporal", "title": "Year", "format": "%Y"},
+          {"aggregate": "sum", "field": "number_incidents", "title": "Annual Attacks"}
+        ]
       }
 
     },
@@ -39,7 +63,7 @@
           "fontWeight": "lighter"
         },
 
-      "width": 700, 
+      "width": 750, 
       "height": 70, 
       "mark": "rule", 
 
