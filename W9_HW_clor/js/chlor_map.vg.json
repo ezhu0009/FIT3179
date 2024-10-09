@@ -7,9 +7,7 @@
     "fontSize": 20
   },
   "projection": {"type": "equirectangular"},
-  
 
-  
   "layer": [
     {
       "data": {
@@ -18,63 +16,56 @@
       },
       "mark": {"type": "geoshape", "stroke": "lightgray"}
     },
-
-
-
-
-
-    
-    {"data": {
-    "url": "https://raw.githubusercontent.com/ezhu0009/FIT3179/refs/heads/main/W9_HW_clor/js/NEW_aus_grat.topojson",
-    "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
-  },
-
-
-
-
-
-  "transform": [
     {
-      "lookup": "properties.name",
-      "from": {
-        "data": {
-          "url": "https://raw.githubusercontent.com/ezhu0009/FIT3179/refs/heads/main/W9_HW_clor/data/shark_fromR.csv"
+      "data": {
+        "url": "https://raw.githubusercontent.com/ezhu0009/FIT3179/refs/heads/main/W9_HW_clor/js/NEW_aus_grat.topojson",
+        "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
+      },
+      "transform": [
+        {
+          "lookup": "properties.name",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/ezhu0009/FIT3179/refs/heads/main/W9_HW_clor/data/shark_fromR.csv"
+            },
+            "key": "State",
+            "fields": ["uninjured", "injured", "fatal", "total_attacks"]
+          }
         },
-        "key": "State",
-        "fields": ["uninjured", "injured", "fatal", "total_attacks"]
+        {"calculate": "datum.total_attacks", "as": "Total Attacks"}
+      ],
+      "mark": {"type": "geoshape", "stroke": "black"},
+      "encoding": {
+        "color": {
+          "field": "Total Attacks",
+          "type": "quantitative",
+          "scale": {
+            "type": "threshold",
+            "domain": [30, 100, 300, 400],
+            "range": ["#f1eef6", "#bdc9e1", "#74a9cf", "#2b8cbe", "#045a8d"]
+          },
+          "legend": {"titleFontSize": 12, "labelFontSize": 12}
+        },
+        "tooltip": [
+          {"field": "properties.name", "type": "nominal", "title": "State"},
+          {"field": "uninjured", "type": "ordinal", "title": "Uninjured attacks"},
+          {"field": "injured", "type": "ordinal", "title": "Injured attacks"},
+          {"field": "fatal", "type": "ordinal", "title": "Fatal attacks"},
+          {"field": "total_attacks", "type": "ordinal", "title": "Total attacks"}
+        ]
       }
     },
-    {"calculate": "datum.total_attacks", "as": "Total Attacks"}
-  ],
-
-
-
-
-
-  "mark": {"type": "geoshape", "stroke": "black"},
-  "encoding": {
-    "color": {
-      "field": "Total Attacks",
-      "type": "quantitative",
-      "scale": {
-        "type": "threshold",
-        "domain": [30, 100, 300, 400],
-        "range": ["#f1eef6", "#bdc9e1", "#74a9cf", "#2b8cbe", "#045a8d"]
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/ezhu0009/FIT3179/refs/heads/main/W9_HW_clor/data/shark_fromR.csv"
       },
-      "legend": {"titleFontSize": 12, "labelFontSize": 12}
-    },
-
-
-
-
-
-    
-    "tooltip": [
-      {"field": "properties.name", "type": "nominal", "title": "State"},
-      {"field": "uninjured", "type": "ordinal", "title": "Uninjured attacks"},
-      {"field": "injured", "type": "ordinal", "title": "Injured attacks"},
-      {"field": "fatal", "type": "ordinal", "title": "Fatal attacks"},
-      {"field": "total_attacks", "type": "ordinal", "title": "Total attacks"}
-    ]
-  }}]
+      "mark": {"type": "text", "color": "black", "fontSize": 12, "fontWeight": "lighter"},
+      "encoding": {
+        "longitude": {"field": "Long", "type": "quantitative"},
+        "latitude": {"field": "Lat", "type": "quantitative"},
+        "text": {"field": "total_attacks", "type": "quantitative"},
+        "tooltip": [{"field": "total_attacks", "type": "quantitative", "title": "Total Attacks"}]
+      }
+    }
+  ]
 }
