@@ -12,7 +12,7 @@
           "fontSize": 20
         },
         
-      "width": 700,
+      "width": 750,
       "height": 250,
       "mark": "bar",
 
@@ -64,7 +64,7 @@
           "fontWeight": "lighter"
         },
 
-      "width": 700, 
+      "width": 750, 
       "height": 60, 
       "mark": "rule", 
 
