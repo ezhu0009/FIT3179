@@ -46,7 +46,8 @@
 
         "tooltip": [
           {"field": "year", "type": "temporal", "title": "Year", "format": "%Y"},
-          {"aggregate": "sum", "field": "number_incidents", "title": "Annual Attacks"}
+          {"aggregate": "sum", "field": "fatal_attacks", "title": "Annual Fatal Attacks"},
+          {"aggregate": "sum", "field": "number_incidents", "title": "Annual Total Attacks"}
         ]
       }
 
