@@ -147,26 +147,13 @@
           {"aggregate": "sum", "field": "abs_incident", "title": "Total Attacks"}
         ]
       }
-    },
+    }
 
 
 
 
 
     
-    {
-      "transform": [
-        {"filter": {"field": "shark_name", "equal": "white shark"}},
-        {"aggregate": [
-          {"op": "sum", "field": "abs_incident", "as": "total_attacks"}
-        ]}
-      ],
-      "mark": "text",
-      "encoding": {
-        "text": {"value": "White shark scientific name:\nCarcharodon carcharias"},
-        "fill": {"value": "grey"}
-      }
-    }
   ],
 
 
