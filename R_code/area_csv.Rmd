@@ -22,7 +22,9 @@ shark_csv <- read_csv("data/CLEANED_Australian_Shark-Incident_Database_Public_Ve
 ```{r cols}
 year_shark <- shark_csv %>%
   group_by(Incident.year) %>%
-  summarise(number_incidents = n(), .groups = 'drop') %>%
+  summarise(number_incidents = n(),
+            fatal_attacks = sum(Victim.injury == "fatal"),
+            .groups = 'drop') %>%
   rename(year = Incident.year)
 
 ```
