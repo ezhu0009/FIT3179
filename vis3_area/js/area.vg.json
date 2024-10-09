@@ -37,8 +37,8 @@
           "title": "Annual Attacks",
           "scale": {
             "type": "threshold", 
-            "domain": [5, 10, 20], 
-            "range": ["#bdc9e1", "#74a9cf", "#2b8cbe", "#045a8d"]
+            "domain": [5, 10, 20, 30], 
+            "range": ["#a6bddb", "#74a9cf", "#3690c0", "#0570b0", "#034e7b"]
           }
 
           
