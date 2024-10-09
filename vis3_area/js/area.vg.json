@@ -12,8 +12,8 @@
           "fontSize": 20
         },
         
-      "width": 750,
-      "height": 300,
+      "width": 700,
+      "height": 250,
       "mark": "bar",
 
       "encoding": {
@@ -38,9 +38,9 @@
           "scale": {
             "type": "threshold", 
             "domain": [5, 10, 20, 30], 
-            "range": ["#a6bddb", "#74a9cf", "#3690c0", "#0570b0", "#034e7b"]
+            "range": ["#feb24c", "#fd8d3c", "#fc4e2a", "#e31a1c", "#b10026"]
           }
-
+          
           
         },
 
@@ -64,8 +64,8 @@
           "fontWeight": "lighter"
         },
 
-      "width": 750, 
-      "height": 70, 
+      "width": 700, 
+      "height": 60, 
       "mark": "rule", 
 
       "params": [{
