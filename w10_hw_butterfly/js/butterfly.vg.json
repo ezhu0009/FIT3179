@@ -6,11 +6,9 @@
     "fontSize": 20
   },
 
-
   "data": {
     "url": "https://raw.githubusercontent.com/ezhu0009/FIT3179/refs/heads/main/w10_hw_butterfly/data/w10_shark_types.csv"
   },
-
 
   "transform": [
     {
@@ -29,53 +27,93 @@
 
 
 
+
   "hconcat": [
+
+
 
     {
       "height": 120,
+      "title": "Fatal",
+
       "transform": [
         {"filter": {"field": "victim_injury", "equal": "fatal"}},
         {"filter": "datum.State == state || state == 'All'"}
       ],
 
-      "title": "Fatal",
-      "mark": "bar",
 
-      "encoding": {
-        "y": {
-          "field": "shark_name",
-          "type": "nominal",
-          "axis": null,
-          "sort": ["white shark", "tiger shark", "bull shark", "whaler shark", "unknown"],
-          "scale": {"domain": ["white shark", "tiger shark", "bull shark", "whaler shark", "unknown"]}
+      "layer": [
+        {
+          "mark": "bar",
+          "encoding": {
+            "y": {
+              "field": "shark_name",
+              "type": "nominal",
+              "axis": null,
+              "sort": ["white shark", "tiger shark", "bull shark", "whaler shark", "unknown"],
+              "scale": {"domain": ["white shark", "tiger shark", "bull shark", "whaler shark", "unknown"]}
+            },
+
+            "x": {
+              "aggregate": "sum",
+              "field": "abs_incident",
+              "title": "Attacks",
+              "axis": {"format": "s", "grid": true},
+              "scale": {"domain": [0, 250]},
+              "sort": "descending"
+            },
+
+            "color": {
+              "field": "shark_name",
+              "scale": {"range": ["#66c2a5", "#fc8d62", "#8da0cb", "#e78ac3", "#a6d854"]},
+              "legend": null
+            }
+          }
         },
+        
 
 
-        "x": {
-          "aggregate": "sum",
-          "field": "abs_incident",
-          "title": "Attacks",
-          "axis": {"format": "s", "grid": true},
-          "scale": {"domain": [0, 250]},
-          "sort": "descending"
-        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "dx": -22,
+            "dy": -1
+          },
 
+          "encoding": {
+            "y": {
+              "field": "shark_name",
+              "type": "nominal",
+              "axis": null,
+              "sort": ["white shark", "tiger shark", "bull shark", "whaler shark", "unknown"]
+            },
 
-        "color": {
-          "field": "shark_name",
-          "scale": {"range": ["#66c2a5", "#fc8d62", "#8da0cb", "#e78ac3", "#a6d854"]},
-          "legend": null
-        },
+            "x": {
+              "aggregate": "sum",
+              "field": "abs_incident",
+              "stack": "zero"
+            },
 
+            "text": {
+              "aggregate": "sum",
+              "field": "abs_incident",
+              "type": "quantitative"
+            },
 
-        "tooltip": [
-          {"field": "shark_name", "type": "nominal", "title": "Shark Common Name"},
-          {"aggregate": "sum", "field": "abs_incident", "title": "Total Attacks"}
-        ]
-      }
+            "color": {"value": "black"}
+          }
+        }
+      ]
     },
 
-    
+
+
+
+
+
+
+
 
 
 
@@ -107,54 +145,93 @@
 
 
 
+
+
+
+
+
+
     {
       "height": 120,
+      "title": "Non-fatal",
+
       "transform": [
         {"filter": {"field": "victim_injury", "equal": "survived"}},
         {"filter": "datum.State == state || state == 'All'"}
       ],
 
-      "title": "Non-fatal",
-      "mark": "bar",
+      "layer": [
+        {
+          "mark": "bar",
+          "encoding": {
+            "y": {
+              "field": "shark_name",
+              "type": "ordinal",
+              "axis": null,
+              "sort": ["white shark", "tiger shark", "bull shark", "whaler shark", "unknown"],
+              "scale": {"domain": ["white shark", "tiger shark", "bull shark", "whaler shark", "unknown"]}
+            },
 
-      "encoding": {
-        "y": {
-          "field": "shark_name",
-          "type": "ordinal",
-          "axis": null,
-          "sort": ["white shark", "tiger shark", "bull shark", "whaler shark", "unknown"],
-          "scale": {"domain": ["white shark", "tiger shark", "bull shark", "whaler shark", "unknown"]}
+            "x": {
+              "aggregate": "sum",
+              "field": "abs_incident",
+              "title": "Attacks",
+              "axis": {"format": "s", "grid": true},
+              "sort": "ascending"
+            },
+
+            "color": {
+              "field": "shark_name",
+              "scale": {"range": ["#66c2a5", "#fc8d62", "#8da0cb", "#e78ac3", "#a6d854"]},
+              "legend": null
+            }
+          }
         },
 
 
-        "x": {
-          "aggregate": "sum",
-          "field": "abs_incident",
-          "title": "Attacks",
-          "axis": {"format": "s", "grid": true},
-          "sort": "ascending"
-        },
 
+        {
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "dx": 7,
+            "dy": 0
+          },
 
-        "color": {
-          "field": "shark_name",
-          "scale": {"range": ["#66c2a5", "#fc8d62", "#8da0cb", "#e78ac3", "#a6d854"]},
-          "legend": null
-        },
+          "encoding": {
+            "y": {
+              "field": "shark_name",
+              "type": "ordinal",
+              "axis": null,
+              "sort": ["white shark", "tiger shark", "bull shark", "whaler shark", "unknown"]
+            },
 
-        "tooltip": [
-          {"field": "shark_name", "type": "nominal", "title": "Shark Common Name"},
-          {"aggregate": "sum", "field": "abs_incident", "title": "Total Attacks"}
-        ]
-      }
+            "x": {
+              "aggregate": "sum",
+              "field": "abs_incident",
+              "stack": "zero"
+            },
+
+            "text": {
+              "aggregate": "sum",
+              "field": "abs_incident",
+              "type": "quantitative"
+            },
+
+            "color": {"value": "black"}
+          }
+        }
+      ]
+
     }
-
-
-
-
-
-    
   ],
+
+
+
+
+
+
+
 
 
 
@@ -164,6 +241,10 @@
     "view": {"stroke": null},
     "axis": {"grid": false}
   },
+
+
+
+
 
 
 
@@ -182,6 +263,7 @@
       }
     }
   ]
+
 
 
 
